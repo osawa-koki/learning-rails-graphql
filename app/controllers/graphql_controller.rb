@@ -6,7 +6,7 @@ class GraphqlController < ApplicationController
   # but you'll have to authenticate your user separately
   # protect_from_forgery with: :null_session
 
-  def execute
+  def execute # rubocop:disable Metrics/MethodLength
     variables = prepare_variables(params[:variables])
     query = params[:query]
     operation_name = params[:operationName]
@@ -14,17 +14,19 @@ class GraphqlController < ApplicationController
       # Query context goes here, for example:
       # current_user: current_user,
     }
-    result = LearningRailsGraphqlSchema.execute(query, variables: variables, context: context, operation_name: operation_name)
+    result = LearningRailsGraphqlSchema.execute(query, variables:, context:,
+                                                       operation_name:)
     render json: result
   rescue StandardError => e
     raise e unless Rails.env.development?
+
     handle_error_in_development(e)
   end
 
   private
 
   # Handle variables in form data, JSON body, or a blank value
-  def prepare_variables(variables_param)
+  def prepare_variables(variables_param) # rubocop:disable Metrics/MethodLength
     case variables_param
     when String
       if variables_param.present?
@@ -43,7 +45,7 @@ class GraphqlController < ApplicationController
     end
   end
 
-  def handle_error_in_development(e)
+  def handle_error_in_development(e) # rubocop:disable Naming/MethodParameterName
     logger.error e.message
     logger.error e.backtrace.join("\n")
 
