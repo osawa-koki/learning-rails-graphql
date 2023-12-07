@@ -239,7 +239,11 @@ GEM
     zeitwerk (2.6.12)
 
 PLATFORMS
-  arm64-darwin-22
+  aarch64-linux
+  arm64-darwin
+  x86_64-linux
+  x86_64-darwin
+  ruby
 
 DEPENDENCIES
   bootsnap
