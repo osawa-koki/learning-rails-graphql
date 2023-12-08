@@ -17,4 +17,11 @@ module Types
     argument :birthday, GraphQL::Types::ISO8601Date, required: false
     argument :lucky_number, Integer, required: false
   end
+
+  class UserFilterType < Types::BaseInputObject
+    argument :name, String, required: false
+    argument :email, String, required: false
+    argument :birthday, GraphQL::Types::ISO8601Date, required: false
+    argument :lucky_number, Integer, required: false
+  end
 end
