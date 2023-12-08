@@ -6,8 +6,16 @@ module Resolvers
 
     type [Types::UserType], null: false
 
-    def resolve
+    argument :filter, Types::UserFilterType, required: false
+
+    def resolve(filter: nil)
       User.all
+
+      if filter.present?
+        User.where(filter.to_h)
+      else
+        User.all
+      end
     end
   end
 end
