@@ -1,4 +1,5 @@
 FROM ruby:3.2.2
+ENV RAILS_ENV=development
 EXPOSE 8000
 WORKDIR /work/
 COPY ./Gemfile ./Gemfile.lock ./
