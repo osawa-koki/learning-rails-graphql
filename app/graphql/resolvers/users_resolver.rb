@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Resolvers
   class UsersResolver < GraphQL::Schema::Resolver
     description 'List all users.'

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Resolvers
   class UserResolver < GraphQL::Schema::Resolver
     description 'Find a user by ID.'
